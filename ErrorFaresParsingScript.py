@@ -38,7 +38,7 @@ def parse_and_write_to_file():
     return
 
 
-# The newly written page 'titles' are looped over and placed into a second list for comparision after the latest scrape.
+# The newly written page 'titles' are looped over and placed into a second list in memory for comparision.
 def store_latest_deals_in_mem():
     with open(ORIGINAL_TEXT_FILE, "r") as F:
         latest_deals_file = []
@@ -81,4 +81,4 @@ if __name__ == '__main__':
         construct_email()
     else:
         print("no new updates")
-        exit()
+        sys.exit(1)
