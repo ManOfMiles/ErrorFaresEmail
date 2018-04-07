@@ -15,7 +15,7 @@ ORIGINAL_TEXT_FILE = "errorfarelist.txt"
 DIFFERENCES_TEXT_FILE = "errorfaresdiffs.txt"
 
 
-# This stores the current error fares from txt file into list before writing potential new data on the next function.
+# This writes the previous data from a text file into a list prior to the next function potentially finding updates.
 def store_existing_deals_in_mem():
     with open(ORIGINAL_TEXT_FILE, "r") as F:
         current_deals_file = []
@@ -24,7 +24,7 @@ def store_existing_deals_in_mem():
     return current_deals_file
 
 
-# The website page 'titles' are parsed then the content is written to a text file (overwrites all data in file).
+# The website page 'titles' are parsed then the content is written to a text file (overwrites all data in the file).
 def parse_and_write_to_file():
     with open(ORIGINAL_TEXT_FILE, "w+") as F:
         for deals in ERROR_FARES_CONTENT:
@@ -54,7 +54,7 @@ def store_diffs_in_file(new_scrape, old_scrape):
     return differences
 
 
-# This function is only executed if there is content in the 'differences' txt file, if data exists, email is sent.
+# This function is only executed if there is content in the 'differences' text file, if data exists, email is sent.
 def construct_email():
     with open(DIFFERENCES_TEXT_FILE, "r") as list:
         msg = MIMEText(list.read())
